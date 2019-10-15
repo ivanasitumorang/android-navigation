@@ -30,6 +30,7 @@ import android.widget.TextView
 import androidx.core.app.NotificationCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 
 /**
  * Fragment used to show how to deep link to a destination
@@ -47,7 +48,8 @@ class DeepLinkFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val textView = view.findViewById<TextView>(R.id.text)
-        textView.text = arguments?.getString("myarg")
+        val safeArgs : DeepLinkFragmentArgs by navArgs()
+        textView.text = safeArgs.myarg
 
         val notificationButton = view.findViewById<Button>(R.id.send_notification_button)
         notificationButton.setOnClickListener {

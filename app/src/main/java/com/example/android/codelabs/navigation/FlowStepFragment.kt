@@ -23,6 +23,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
+import kotlinx.android.synthetic.main.navigation_activity.*
 
 /**
  * Presents how multiple steps flow could be implemented.
@@ -39,7 +40,9 @@ class FlowStepFragment : Fragment() {
 //        val flowStepNumber = arguments?.getInt("flowStepNumber")
         val safeArgs: FlowStepFragmentArgs by navArgs()
         val flowStepNumber = safeArgs.flowStepNumber
+        val flowStepWord = if (flowStepNumber == 1) "One" else "Two"
 
+        activity?.toolbar?.title = "Step $flowStepWord"
         return when (flowStepNumber) {
             2 -> inflater.inflate(R.layout.flow_step_two_fragment, container, false)
             else -> inflater.inflate(R.layout.flow_step_one_fragment, container, false)
